@@ -17,7 +17,6 @@ import java.util.concurrent.TimeUnit;
 @RestController
 public class SomeController {
 
-
     @GetMapping("/common")
     public String commonHandle() {
         log.info("common start..............");
@@ -66,7 +65,7 @@ public class SomeController {
         return flux;
     }
 
-
+    //sse
     @RequestMapping(value = "/sse",produces = "text/event-stream")
     public Flux<String> sseHandle(){
         return Flux.just("北京","shanghai","广州");
