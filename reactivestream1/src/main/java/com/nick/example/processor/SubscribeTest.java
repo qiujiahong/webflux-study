@@ -1,4 +1,4 @@
-package com.nick.example;
+package com.nick.example.processor;
 
 import java.util.Random;
 import java.util.concurrent.SubmissionPublisher;
@@ -8,10 +8,14 @@ public class SubscribeTest {
     public static void main(String[] args) throws InterruptedException {
         //创建发布者(泛行是发布者生产消息类型)
         SubmissionPublisher<Integer> publisher = new SubmissionPublisher<>();
+        //创建处理器
+        SomeProcessor processor = new SomeProcessor();
         //创建订阅者
         SomeSubscriber subscriber = new SomeSubscriber();
         //建立订阅关系
-        publisher.subscribe(subscriber);
+        //publisher.subscribe(subscriber);
+        publisher.subscribe(processor);
+        processor.subscribe(subscriber);
         //发布者生产并发送消息(生产300条消息)
 
         for (int i=0;i<300;i++){
